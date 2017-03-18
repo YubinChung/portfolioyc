@@ -47,7 +47,7 @@
                     <td>{{ $menu -> status}}</td>
                     <td>
                         <form rule="form" action="{{route('menuDestroy',$menu -> id)}}" method="post">
-                            {{ method_field("DELETE") }}
+                            {{ method_field("DELETE")}}
                             {{ csrf_field() }}
                             <button type="submit" class="btn btn-danger btn-block mt-1"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</button>
                         </form>
