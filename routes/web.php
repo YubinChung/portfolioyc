@@ -17,17 +17,28 @@ Route::get('/', 'HomeController@index');
 Route::get('/profile', 'HomeController@profile');
 Route::get('/blog', 'HomeController@blog');
 
+Route::get('docs/{file?}', 'DocsController@show');
+
 //admin
 Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/admin', 'AdminController@index');
 
-    Route::resource('/admin/menuList', 'MenuController');
-    Route::get('/admin/menuList', 'MenuController@index')->name('menuList');
-    Route::get('/admin/menuList/create', 'MenuController@create')->name('menuCreate');
-    Route::post('/admin/menuList/create', 'MenuController@store')->name('menuStore');
+    Route::resource('/admin/list', 'MenuController');
+    Route::get('/admin/list', 'MenuController@index')->name('menuList');
 
-    Route::post('/admin/menuList/{$id}', 'MenuController@destroy')->name('menuDestroy');
+
+
+    Route::get('/admin/list/create', 'MenuController@create')->name('menuCreate');
+    Route::post('/admin/list/create', 'MenuController@store')->name('menuStore');
+
+    Route::get('/admin/list/{$id}', 'MenuController@show')->name('menuShow');
+
+    Route::get('/admin/list/{$id}/edit', 'MenuController@edit')->name('menuEdit');
+    Route::post('/admin/list/{$id}/edit', 'MenuController@update')->name('menuUpdate');
+
+    Route::post('/admin/list/{$id}', 'MenuController@destroy')->name('menuDestroy');
+
 });
 
 Route::get('/{id}', 'HomeController@show')->name('show');

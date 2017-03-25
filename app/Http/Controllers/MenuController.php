@@ -41,7 +41,7 @@ class MenuController extends Controller
     {
         $validator = Validator::make($request->all(), Menu::$rules);
         if($validator->fails()){
-            return redirect('/admin/menuList')->withErrors($validator->errors())->withInput();
+            return redirect('/admin/list')->withErrors($validator->errors())->withInput();
 
         }
 
@@ -74,7 +74,9 @@ class MenuController extends Controller
      */
     public function show($id)
     {
-        return view('/admin/menuList');
+        $data['menus'] = Menu::findOrFail($id);
+        // if($data['menus'] == null) abort(404, $id." Model has not found");
+        return view ('admin.menu.show' ,$data);
     }
 
     /**
@@ -85,7 +87,9 @@ class MenuController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['menus'] = Menu::findOrFail($id);
+        return view ('admin.menu.edit', $data);
+
     }
 
     /**
@@ -102,8 +106,10 @@ class MenuController extends Controller
         $data['menus'] ->slug = $request->slug;
         $data['menus'] ->status = $request->status;
         $data['menus'] ->save();
+        $data['menus'] ->update($data);
 
-        return back()->with('message', $data['menus']->name." has been updated");
+        // return view('admin.menu,index')->with('message', $data['menus']->name." has been updated");
+        return redirect()->with('message', $data['menus']->name." has been updated");
     }
 
     /**
@@ -117,6 +123,6 @@ class MenuController extends Controller
         $data['menus'] = Menu::findOrFail($id);
         $data['menus']->delete();
 
-        return redirect('/admin/menuList')->with('message', $data['menus']->name." has been deleted");
+        return redirect('/admin/list')->with('message', $data['menus']->name." has been deleted");
     }
 }

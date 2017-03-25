@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('contents')
-profile section
+    <div class="docs profile_wrap">
+        {!!$content!!}
+    </div>
 
 @endsection

@@ -232,6 +232,10 @@
             </nav>
         </div>
         <div class="col-sm-9">
+            {{--<div class="panel panel-info">--}}
+                {{--<div class="panel-heading"> <h3 class="panel-title">Dashboard</h3> </div>--}}
+                {{--<div class="panel-body">Logged in !</div> --}}
+            {{--</div>--}}
             @yield('contents')
         </div>
     </div>

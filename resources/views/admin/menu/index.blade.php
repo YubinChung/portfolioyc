@@ -3,15 +3,15 @@
 @section('contents')
 <div class="admin_menu_wrap">
     <div class="col-md-4">
-        <form action="{{route('menuStore')}}" method="post">
+        <form action="{{route('menuCreate')}}" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
             <div class="form-group">
-                <label for="exampleInputEmail1">Name</label>
+                <label for="menu_name">Name</label>
                 <input type="text" name="name" class="form-control" placeholder="{{ $errors->has('name')? old('name'):'Name'}}" value="" class="menu_name">
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Slug</label>
+                <label for="menu_slug">Slug</label>
                 <input type="text" name="slug" class="form-control"  placeholder="{{ $errors->has('name')? old('slug'):'Slug'}}" value="">
             </div>
             <div class="checkbox">
@@ -27,7 +27,7 @@
 
         @endforeach
     </div>
-    <div class="col-md-8">
+    <div class="col-md-7">
         <table class="table table-bordered">
             <thead>
             <tr>
@@ -35,6 +35,7 @@
                 <th>Name</th>
                 <th>Slug</th>
                 <th>State</th>
+                <th>Edit</th>
                 <th>Delete</th>
             </tr>
             </thead>
@@ -42,20 +43,24 @@
             @foreach( $menus as $menu )
                 <tr>
                     <th>{{ $menu -> m_order }} </th>
-                    <td>{{ucfirst($menu-> name)}}</td>
-                    <td>{{ ($menu->slug )}}</td>
+                    <td><a href="{{route('menuShow', $menu -> id)}}">{{ucfirst($menu-> name)}}</a></td>
+                    <td>{{ $menu->slug }}</td>
                     <td>{{ $menu -> status}}</td>
+                    <td>
+                        <a href="{{ route ('menuEdit', $menu -> id) }}" class="btn btn-info btn-block"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Edit</a>
+                    </td>
                     <td>
                         <form rule="form" action="{{route('menuDestroy',$menu -> id)}}" method="post">
                             {{ method_field("DELETE")}}
                             {{ csrf_field() }}
-                            <button type="submit" class="btn btn-danger btn-block mt-1"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</button>
+                            <button type="submit" class="btn btn-danger btn-block mt-1"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete</button>
                         </form>
                     </td>
                 <tr>
             @endforeach
             </tbody>
         </table>
+
     </div>
 </div>
 

@@ -41,7 +41,7 @@
                 <span class="line2"></span>
             </a>
         </nav>
-        <nav class="menu_main">
+        <nav class="menu_main"> `1  
             <ul>
                 @foreach($menus as $menu)
                 <li><a href="{{ $menu -> slug }}" title="{{ $menu -> name }}">{{ $menu -> name }}</a></li>
