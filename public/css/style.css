@@ -127,7 +127,7 @@ p.site-description {
 #content nav.menu_cat ul li a {
     padding: 10px 20px;
 }
-.itemlist .item {padding-bottom: 30px;border: 1px solid #f7f7f7;}
+.itemlist .item {padding-bottom: 30px;border: 1px solid #f7f7f7;width:31%;margin:1%}
 div.item_desc{text-align: center}
 
 #content .item a:hover .item_desc {position: absolute;top: 0;right: 0;left: 0;bottom: 0;background-color: rgba(0, 0, 0, 0.92);padding: 31% 0 15%;}
@@ -250,6 +250,52 @@ footer .site-info h6{text-transform: uppercase;margin: 0;font-size: 10px;font-we
     font-size: 11px!important;
     font-weight: 100;
     letter-spacing: 2px;
+}
+
+
+/* docs */
+
+.docs.profile_wrap {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.docs.profile_wrap h1 {
+    font-size: 20px!important;
+    margin-top: 50px;
+}
+.docs.profile_wrap h1:first-child {border-top: 0;padding-top: 0;}
+
+.contents_wrap .docs h3+table {
+    margin-top: 0!important;
+}
+
+.contents_wrap h1+table td {
+    padding: 5px;
+}
+
+.contents_wrap h1+table thead th {
+    padding-bottom: 10px;
+    font-size: 13px!important;
+}
+.contents_wrap th strong {
+    font-size: 12px!important;
+    margin-bottom: 8px!important;
+    display: block;
+}
+
+.contents_wrap .docs h3 {
+    font-size: 15px!important;
+    margin-top: 50px;
+}
+
+.docs.profile_wrap blockquote p {
+    margin-bottom: 0!important;
+}
+
+.contents_wrap table {
+    margin-bottom: 20px!important;
+    margin-top: 50px!important;
 }
 
 

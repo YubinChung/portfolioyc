@@ -102,14 +102,15 @@ class MenuController extends Controller
     public function update(Request $request, $id)
     {
         $data['menus'] = Menu::findOrFail($id);
+
         $data['menus'] ->name = $request->name;
         $data['menus'] ->slug = $request->slug;
         $data['menus'] ->status = $request->status;
         $data['menus'] ->save();
-        $data['menus'] ->update($data);
+
 
         // return view('admin.menu,index')->with('message', $data['menus']->name." has been updated");
-        return redirect()->with('message', $data['menus']->name." has been updated");
+        return redirect('/admin/list')->with('message', $data['menus']->name." has been updated");
     }
 
     /**

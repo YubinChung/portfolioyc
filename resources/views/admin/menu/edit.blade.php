@@ -4,7 +4,7 @@
     <h2>Edit Post</h2>
     <div>
 
-        <form role="form" action="{{ route('menu.update', $menus->id)}}" method="post" class="form-horizontal">
+        <form role="form" action="{{ route('menuEdit', $menus->id)}}" method="post" class="form-horizontal">
             {{method_field("PUT")}}
             {{csrf_field()}}
             <div>
@@ -20,12 +20,16 @@
             <div>
                 <label for="Menu Status">Menu Status</label>
                 <div>
+                    {{--<select name="status" id="">--}}
+                        {{--<option value="published">Published</option>--}}
+                        {{--<option value="unpublished">Unpublished</option>--}}
+                    {{--</select>--}}
                     <textarea name="status" id="status" class="form-control">{{ $menus->status}}</textarea>
                 </div>
             </div>
             <div>
                 <div>
-                    <button class="btn btn-primary" data-link="{{ route('menuStore') }}" type="submit">Update</button>
+                    <button class="btn btn-primary" data-link="{{ route('menuUpdate', $menus->id) }}" type="submit">Update</button>
 
                 </div>
             </div>

@@ -26,7 +26,7 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::resource('/admin/list', 'MenuController');
     Route::get('/admin/list', 'MenuController@index')->name('menuList');
-
+    Route::post('/admin/list', 'MenuController@update')->name('menuUpdate');
 
 
     Route::get('/admin/list/create', 'MenuController@create')->name('menuCreate');
@@ -35,7 +35,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/admin/list/{$id}', 'MenuController@show')->name('menuShow');
 
     Route::get('/admin/list/{$id}/edit', 'MenuController@edit')->name('menuEdit');
-    Route::post('/admin/list/{$id}/edit', 'MenuController@update')->name('menuUpdate');
+
 
     Route::post('/admin/list/{$id}', 'MenuController@destroy')->name('menuDestroy');
 
@@ -44,7 +44,7 @@ Route::group(['middleware' => 'auth'], function() {
 Route::get('/{id}', 'HomeController@show')->name('show');
 
 
-Route::get('/home', 'HomeController@index');
+// Route::get('/home', 'HomeController@index');
 
 
 
